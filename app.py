@@ -11,6 +11,7 @@ from email import encoders
 # --- PREMIUM STYLING CONFIGURATION ---
 st.set_page_config(page_title="CYBERMAIL // Core Engine", layout="wide", initial_sidebar_state="expanded")
 
+# Injected CSS engine fixing all syntax parameters and applying high-end dark cyberpunk themes
 st.markdown("""
     <style>
     .stApp {
@@ -55,15 +56,53 @@ st.markdown("""
         font-weight: 800;
         letter-spacing: -0.02em;
     }
-    .cyan-glow {
-        color: #00F2FE;
-        text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+    
+    /* Premium Motivating Graphic Banner Fonts */
+    .motivational-banner {
+        background-color: #11141D;
+        border: 1px solid #1E293B;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .gold-title {
+        color: #D4AF37;
+        font-size: 26px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 0;
+    }
+    .white-subtitle {
+        color: #FFFFFF;
+        font-size: 32px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin: 5px 0 0 0;
+    }
+    .sub-tagline {
+        color: #64748B;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        margin-top: 8px;
+        text-transform: uppercase;
     }
     </style>
-""", unsafe_allow_html=True)  # <-- FIX: Changed unsafe-allow_index=True to unsafe_allow_html=True
+""", unsafe_allow_html=True) 
 
-st.markdown('# ⚡ <span class="cyan-glow">CYBERMAIL</span> // <span style="font-weight:300; font-size:24px;">PREMIUM CAMPAIGN MATRIX</span>', unsafe-allow_html=True)
-st.write("Lightweight standalone bulk delivery node configured for GoDaddy Titan Gateways.")
+# --- NEW MOTIVATIONAL ULTRA PREMIUM HEADER BLOCK ---
+st.markdown("""
+    <div class="motivational-banner">
+        <p class="gold-title">This time next year,</p>
+        <p class="white-subtitle">We'll be millionaires.</p>
+        <div class="sub-tagline">Dream Big. Work Hard. Make It Happen.</div>
+    </div>
+""", unsafe_allow_html=True)
+
+st.write("Lightweight standalone bulk delivery node optimized for team deployment workflows.")
 
 # --- SIDEBAR CONTROL PANEL ---
 st.sidebar.markdown('### 🔐 GATEWAY CREDENTIALS')
