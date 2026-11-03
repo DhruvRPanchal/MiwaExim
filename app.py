@@ -9,7 +9,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 # --- ENTERPRISE MINIMALIST STYLING CONFIGURATION ---
-st.set_page_config(page_title="MiwaExim Mail Sender", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="MiwaExim Mail", layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("""
     <style>
@@ -121,16 +121,16 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown('## 🏢 MiwaExim // <span style="font-weight:300; font-size:20px; color:#94A3B8;">Enterprise Email Hub</span>', unsafe_allow_html=True)
-st.write("Secure, high-efficiency broadcast node optimized for Titan mail infrastructure.")
+st.markdown('## 🏢 MiwaExim - Exporting Trust// <span style="font-weight:300; font-size:20px; color:#94A3B8;"> </span>', unsafe_allow_html=True)
+st.write("Import export company in Ahmedabad, Gujarat")
 
 # --- SIDEBAR CONTROL PANEL ---
 st.sidebar.markdown('### 🔐 GATEWAY CREDENTIALS')
 smtp_server = st.sidebar.text_input("SMTP TARGET SERVER", value="smtp.titan.email")
 port = st.sidebar.number_input("SECURE PORT", value=587)
-sender_email = st.sidebar.text_input("AUTHENTICATED IDENTITY (EMAIL)", placeholder="sender@domain.com")
-sender_password = st.sidebar.text_input("GATEWAY PASSKEY", type="password")
-
+# The script will now pull your saved credentials securely from the cloud vault
+sender_email = st.sidebar.text_input("AUTHENTICATED IDENTITY (EMAIL)", value=st.secrets["GODADDY_EMAIL"])
+sender_password = st.sidebar.text_input("GATEWAY PASSKEY", value=st.secrets["GODADDY_PASSWORD"], type="password")
 st.sidebar.markdown('---')
 st.sidebar.markdown('### ⚙️ SAFETY SYSTEM ENGINE')
 throttle_delay = st.sidebar.slider("THROTTLE DELAY (SEC / EMAIL)", min_value=5, max_value=20, value=12)
