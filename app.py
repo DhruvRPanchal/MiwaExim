@@ -9,21 +9,34 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 # --- ENTERPRISE MINIMALIST STYLING CONFIGURATION ---
-st.set_page_config(page_title="MiwaExim Delivery Hub", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="MiwaExim Mail Sender", layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("""
     <style>
-    /* Clean Minimalist Charcoal & Slate Theme */
+    /* Clean Minimalist Charcoal & Slate Theme Base */
     .stApp {
         background-color: #0F172A;
         color: #F1F5F9;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
     
-    /* Professional Sidebar Panel */
+    /* Professional Sidebar Panel Setup */
     section[data-testid="stSidebar"] {
         background-color: #0B0F19 !important;
         border-right: 1px solid #334155;
+    }
+    
+    /* 🔴 THE VISIBILITY FIX: Force ALL Sidebar and Main Panel Labels to be Bright White */
+    section[data-testid="stSidebar"] label, 
+    section[data-testid="stSidebar"] p, 
+    section[data-testid="stSidebar"] span,
+    div[data-testid="stVerticalBlock"] label,
+    .stWidgetFormLabel, 
+    label {
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+        opacity: 1 !important;
     }
     
     /* Sleek Clean Container Cards */
@@ -35,10 +48,10 @@ st.markdown("""
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
     }
     
-    /* Premium Input Fields */
+    /* Premium Input Fields Data Typography Settings */
     input, textarea, select {
         background-color: #0F172A !important;
-        color: #F8FAFC !important;
+        color: #FFFFFF !important; /* Text inside the input box */
         border: 1px solid #475569 !important;
         border-radius: 6px !important;
     }
@@ -97,7 +110,7 @@ st.markdown("""
         margin-top: 10px;
     }
     </style>
-""", unsafe_allow_html=True) 
+""", unsafe_allow_html=True)
 
 # --- PREMIUM CORPORATE BRANDING HEADER ---
 st.markdown("""
