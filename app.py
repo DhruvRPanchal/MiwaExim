@@ -121,7 +121,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown('## 🏢 MiwaExim - Exporting Trust// <span style="font-weight:300; font-size:20px; color:#94A3B8;"> </span>', unsafe_allow_html=True)
+st.markdown('## 🏢 MiwaExim - Exporting Trust <span style="font-weight:300; font-size:20px; color:#94A3B8;"> </span>', unsafe_allow_html=True)
 st.write("Import export company in Ahmedabad, Gujarat")
 
 # --- SIDEBAR CONTROL PANEL ---
@@ -131,8 +131,6 @@ port = st.sidebar.number_input("SECURE PORT", value=587)
 # The script will now pull your saved credentials securely from the cloud vault
 sender_email = st.sidebar.text_input("AUTHENTICATED IDENTITY (EMAIL)", value=st.secrets["GODADDY_EMAIL"])
 sender_password = st.sidebar.text_input("GATEWAY PASSKEY", value=st.secrets["GODADDY_PASSWORD"], type="password")
-st.sidebar.markdown('---')
-st.sidebar.markdown('### ⚙️ SAFETY SYSTEM ENGINE')
 throttle_delay = st.sidebar.slider("THROTTLE DELAY (SEC / EMAIL)", min_value=5, max_value=20, value=12)
 
 # --- MAIN ENGINE LAYOUT ---
