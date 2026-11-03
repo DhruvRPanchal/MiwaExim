@@ -8,25 +8,20 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
-# --- ULTRA PREMIUM MATRIX STYLING (Injected CSS) ---
+# --- PREMIUM STYLING CONFIGURATION ---
 st.set_page_config(page_title="CYBERMAIL // Core Engine", layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("""
     <style>
-    /* Premium Obsidian & Cyberpunk Glow Theme */
     .stApp {
         background-color: #0B0F19;
         color: #E2E8F0;
         font-family: 'Inter', system-ui, sans-serif;
     }
-    
-    /* Sleek Sidebar Customization */
     section[data-testid="stSidebar"] {
         background-color: #070A12 !important;
         border-right: 1px solid #1E293B;
     }
-    
-    /* Glassmorphism Premium Container Cards */
     div[data-testid="stVerticalBlock"] > div {
         background: rgba(15, 23, 42, 0.6);
         border: 1px solid #1E293B;
@@ -34,20 +29,12 @@ st.markdown("""
         padding: 24px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     }
-    
-    /* Custom Input Fields Customization */
     input, textarea, select {
         background-color: #0F172A !important;
         color: #F8FAFC !important;
         border: 1px solid #334155 !important;
         border-radius: 6px !important;
     }
-    input:focus, textarea:focus {
-        border-color: #00F2FE !important;
-        box-shadow: 0 0 10px rgba(0, 242, 254, 0.2) !important;
-    }
-    
-    /* High-End Badass Action Buttons */
     div.stButton > button:first-child {
         background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%) !important;
         color: #070A12 !important;
@@ -56,7 +43,6 @@ st.markdown("""
         border: none !important;
         border-radius: 8px !important;
         padding: 14px 28px !important;
-        transition: all 0.3s ease !important;
         box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
         width: 100%;
     }
@@ -64,8 +50,6 @@ st.markdown("""
         transform: translateY(-2px);
         box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
     }
-    
-    /* Dynamic Headers */
     h1, h2, h3 {
         color: #F8FAFC;
         font-weight: 800;
@@ -76,13 +60,12 @@ st.markdown("""
         text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
     }
     </style>
-""", unsafe-allow_index=True)
+""", unsafe_allow_html=True)  # <-- FIX: Changed unsafe-allow_index=True to unsafe_allow_html=True
 
-# --- APP LAYOUT STRUCTURE ---
-st.markdown('# ⚡ <span class="cyan-glow">CYBERMAIL</span> // <span style="font-weight:300; font-size:24px;">PREMIUM CAMPAIGN MATRIX</span>', unsafe-allow_index=True)
-st.write("Lightweight, zero-bloat standalone bulk delivery node configured for Titan Gateways.")
+st.markdown('# ⚡ <span class="cyan-glow">CYBERMAIL</span> // <span style="font-weight:300; font-size:24px;">PREMIUM CAMPAIGN MATRIX</span>', unsafe-allow_html=True)
+st.write("Lightweight standalone bulk delivery node configured for GoDaddy Titan Gateways.")
 
-# --- SIDEBAR: SECURE TERMINAL SETTINGS ---
+# --- SIDEBAR CONTROL PANEL ---
 st.sidebar.markdown('### 🔐 GATEWAY CREDENTIALS')
 smtp_server = st.sidebar.text_input("SMTP TARGET SERVER", value="smtp.titan.email")
 port = st.sidebar.number_input("SECURE PORT", value=587)
@@ -91,17 +74,16 @@ sender_password = st.sidebar.text_input("GATEWAY PASSKEY", type="password")
 
 st.sidebar.markdown('---')
 st.sidebar.markdown('### ⚙️ SAFETY SYSTEM ENGINE')
-throttle_delay = st.sidebar.slider("THROTTLE DELAY (SEC / EMAIL)", min_value=5, max_value=20, value=12,
-                                   help="Crucial safety windows for Titan limits. 12s keeps delivery optimized.")
+throttle_delay = st.sidebar.slider("THROTTLE DELAY (SEC / EMAIL)", min_value=5, max_value=20, value=12)
 
-# --- MAIN INTERFACE: ROW COGNITIVE SPLIT ---
+# --- MAIN ENGINE LAYOUT ---
 col1, col2 = st.columns([1.1, 0.9], gap="large")
 
 with col1:
     st.markdown("### 📝 1. COMPOSER SUITE")
-    subject = st.text_input("CAMPAIGN SUBJECT LINE", placeholder="Enter premium transmission subject...")
-    email_mode = st.segmented_control("CONTENT PROTOCOL", ["Plain Text", "HTML Template"], default="Plain Text")
-    body_content = st.text_area("PAYLOAD CORE BODY CONTENT", height=240, placeholder="Write payload text or drop advanced production HTML structures here...")
+    subject = st.text_input("CAMPAIGN SUBJECT LINE", placeholder="Enter transmission subject...")
+    email_mode = st.selectbox("CONTENT PROTOCOL MODE", ["Plain Text", "HTML Template"])
+    body_content = st.text_area("PAYLOAD CORE BODY CONTENT", height=240, placeholder="Write text body or drop production HTML template blocks here...")
 
 with col2:
     st.markdown("### 📂 2. DATA MATRIX & ATTACHMENTS")
@@ -110,11 +92,9 @@ with col2:
     
     st.markdown("### 🚦 3. OPERATIONAL EXECUTION")
     
-    # Broadcast processing loop framework logic
     if st.button("🔥 DISPATCH CAMPAIGN STREAMED ENGINE"):
         if contact_file is not None:
             try:
-                # High-speed data extraction logic
                 if contact_file.name.endswith('.csv'):
                     df = pd.read_csv(contact_file)
                 else:
@@ -127,9 +107,8 @@ with col2:
                     if not sender_email or not sender_password:
                         st.error("🚨 CRITICAL OPERATION HALTED: Authentication profile data missing in terminal settings panel.")
                     else:
-                        st.toast(f"Matrix Node Online: Synchronized {len(target_list)} unique targets.", icon="🔋")
+                        st.toast(f"Matrix Node Online: Loaded {len(target_list)} contacts.", icon="🔋")
                         
-                        # --- CONCURRENT LIVE DELIVERY ENGINE REPORT ---
                         progress_bar = st.progress(0)
                         status_metrics = st.empty()
                         
@@ -162,20 +141,19 @@ with col2:
                             except Exception as fail_trace:
                                 st.sidebar.error(f"Drop target failure [{email}]: {str(fail_trace)}")
                                 
-                            # Streamed UI data updates
                             current_prog = (index + 1) / total
                             progress_bar.progress(current_prog)
-                            status_metrics.markdown(f"**🟢 Stream Status:** Delivering package `{index+1}/{total}` // Node Success Score: `{success_count}`")
+                            status_metrics.markdown(f"**🟢 Stream Status:** Delivering package `{index+1}/{total}` // Success: `{success_count}`")
                             
                             if index < total - 1:
                                 time.sleep(throttle_delay)
                                 
                         server.quit()
                         st.balloons()
-                        st.success(f"⚡ ALL TRANSPORTS COMPLETE: Successfully broadcasted to {success_count}/{total} entities.")
+                        st.success(f"⚡ ALL TRANSPORTS COMPLETE: Broadcast sent to {success_count}/{total} entities.")
                 else:
-                    st.error("🚨 SHEET SCAN REJECTED: System mapping failed to detect any valid columns labeled 'Email'.")
+                    st.error("🚨 SHEET SCAN REJECTED: System failed to locate an 'Email' column label.")
             except Exception as io_err:
                 st.error(f"🚨 RESOURCE READ FAULT: {str(io_err)}")
         else:
-            st.error("🚨 CRITICAL TARGET FRAME EXCEPTION: Please drop your target dataset matrix sheet to configure pipeline variables.")
+            st.error("🚨 CRITICAL TARGET EXCEPTION: Drop your contact list sheet file first.")
