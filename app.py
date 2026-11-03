@@ -8,101 +8,108 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
-# --- PREMIUM STYLING CONFIGURATION ---
-st.set_page_config(page_title="CYBERMAIL // Core Engine", layout="wide", initial_sidebar_state="expanded")
+# --- ENTERPRISE MINIMALIST STYLING CONFIGURATION ---
+st.set_page_config(page_title="MiwaExim Delivery Hub", layout="wide", initial_sidebar_state="expanded")
 
-# Injected CSS engine fixing all syntax parameters and applying high-end dark cyberpunk themes
 st.markdown("""
     <style>
+    /* Clean Minimalist Charcoal & Slate Theme */
     .stApp {
-        background-color: #0B0F19;
-        color: #E2E8F0;
-        font-family: 'Inter', system-ui, sans-serif;
+        background-color: #0F172A;
+        color: #F1F5F9;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
+    
+    /* Professional Sidebar Panel */
     section[data-testid="stSidebar"] {
-        background-color: #070A12 !important;
-        border-right: 1px solid #1E293B;
+        background-color: #0B0F19 !important;
+        border-right: 1px solid #334155;
     }
+    
+    /* Sleek Clean Container Cards */
     div[data-testid="stVerticalBlock"] > div {
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid #1E293B;
-        border-radius: 12px;
+        background: #1E293B;
+        border: 1px solid #334155;
+        border-radius: 8px;
         padding: 24px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
     }
+    
+    /* Premium Input Fields */
     input, textarea, select {
         background-color: #0F172A !important;
         color: #F8FAFC !important;
-        border: 1px solid #334155 !important;
+        border: 1px solid #475569 !important;
         border-radius: 6px !important;
     }
+    input:focus, textarea:focus {
+        border-color: #38BDF8 !important;
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2) !important;
+    }
+    
+    /* Enterprise Action Button (Clean Slate Gradient) */
     div.stButton > button:first-child {
-        background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%) !important;
-        color: #070A12 !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.05em !important;
+        background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%) !important;
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
         border: none !important;
-        border-radius: 8px !important;
-        padding: 14px 28px !important;
-        box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        border-radius: 6px !important;
+        padding: 12px 24px !important;
+        transition: all 0.2s ease !important;
         width: 100%;
     }
     div.stButton > button:first-child:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
-    }
-    h1, h2, h3 {
-        color: #F8FAFC;
-        font-weight: 800;
-        letter-spacing: -0.02em;
+        transform: translateY(-1px);
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
     }
     
-    /* Premium Motivating Graphic Banner Fonts */
-    .motivational-banner {
-        background-color: #11141D;
-        border: 1px solid #1E293B;
-        border-radius: 10px;
-        padding: 20px;
+    /* Motivational Executive Header Banner */
+    .executive-banner {
+        background-color: #1E293B;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 28px;
         text-align: center;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
     }
     .gold-title {
-        color: #D4AF37;
-        font-size: 26px;
-        font-weight: 800;
+        color: #F59E0B;
+        font-size: 24px;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
         margin: 0;
     }
     .white-subtitle {
         color: #FFFFFF;
-        font-size: 32px;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        margin: 5px 0 0 0;
+        font-size: 36px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        margin: 6px 0 0 0;
     }
     .sub-tagline {
-        color: #64748B;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        margin-top: 8px;
-        text-transform: uppercase;
+        color: #94A3B8;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        margin-top: 10px;
     }
     </style>
 """, unsafe_allow_html=True) 
 
-# --- NEW MOTIVATIONAL ULTRA PREMIUM HEADER BLOCK ---
+# --- PREMIUM CORPORATE BRANDING HEADER ---
 st.markdown("""
-    <div class="motivational-banner">
+    <div class="executive-banner">
         <p class="gold-title">This time next year,</p>
         <p class="white-subtitle">We'll be millionaires.</p>
-        <div class="sub-tagline">Dream Big. Work Hard. Make It Happen.</div>
+        <div class="sub-tagline">DREAM BIG. WORK HARD. MAKE IT HAPPEN.</div>
     </div>
 """, unsafe_allow_html=True)
 
-st.write("Lightweight standalone bulk delivery node optimized for team deployment workflows.")
+st.markdown('## 🏢 MiwaExim // <span style="font-weight:300; font-size:20px; color:#94A3B8;">Enterprise Email Hub</span>', unsafe_allow_html=True)
+st.write("Secure, high-efficiency broadcast node optimized for Titan mail infrastructure.")
 
 # --- SIDEBAR CONTROL PANEL ---
 st.sidebar.markdown('### 🔐 GATEWAY CREDENTIALS')
@@ -146,7 +153,7 @@ with col2:
                     if not sender_email or not sender_password:
                         st.error("🚨 CRITICAL OPERATION HALTED: Authentication profile data missing in terminal settings panel.")
                     else:
-                        st.toast(f"Matrix Node Online: Loaded {len(target_list)} contacts.", icon="🔋")
+                        st.toast(f"MiwaExim Node Online: Loaded {len(target_list)} contacts.", icon="🔋")
                         
                         progress_bar = st.progress(0)
                         status_metrics = st.empty()
