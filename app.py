@@ -23,15 +23,14 @@ st.markdown("""
     h1, h2, h3 { color: #F8FAFC; font-weight: 800; letter-spacing: -0.02em; }
     .cyan-glow { color: #00F2FE; text-shadow: 0 0 8px rgba(0, 242, 254, 0.5); }
     </style>
-""", unsafe_allow_html=True) 
+""", unsafe_allow_html=True)
 
-st.markdown('# ⚡ <span class="cyan-glow">CYBERMAIL</span> // <span style="font-weight:300; font-size:24px;">VAULT LOCKED NODE</span>', unsafe-allow_html=True)
+st.markdown('# ⚡ <span class="cyan-glow">CYBERMAIL</span> // <span style="font-weight:300; font-size:24px;">VAULT LOCKED NODE</span>', unsafe_allow_html=True)
 st.write("System authenticated via secure environment tokens. Credentials hidden.")
 
 # --- SIDEBAR: READ AUTO-CREDENTIALS ---
 st.sidebar.markdown('### 🔒 SECURE NODE STATUS')
 try:
-    # Safely reading hardcoded keys directly out of the secure cloud console vault
     sender_email = st.secrets["GODADDY_EMAIL"]
     sender_password = st.secrets["GODADDY_PASSWORD"]
     st.sidebar.success("🔑 Vault Credentials Loaded Successfully")
@@ -54,7 +53,9 @@ col1, col2 = st.columns([1.1, 0.9], gap="large")
 with col1:
     st.markdown("### 📝 1. COMPOSER SUITE")
     subject = st.text_input("CAMPAIGN SUBJECT LINE", placeholder="Enter transmission subject...")
-    email_mode = st.segmented_control("CONTENT PROTOCOL", ["Plain Text", "HTML Template"], default="Plain Text")
+    
+    # Streamlit updated selection method for premium feel
+    email_mode = st.radio("CONTENT PROTOCOL", ["Plain Text", "HTML Template"], horizontal=True)
     body_content = st.text_area("PAYLOAD CORE BODY CONTENT", height=240, placeholder="Write text or HTML copy here...")
 
 with col2:
@@ -76,7 +77,9 @@ with col2:
                     
                 email_col = [col for col in df.columns if 'email' in col.lower()]
                 if email_col:
-                    target_list = df[email_col[0]].dropna().unique().tolist() # Fixed column targeting bug
+                    # Select the first matched column string dynamically
+                    matched_col = email_col[0]
+                    target_list = df[matched_col].dropna().unique().tolist()
                     st.toast(f"Matrix Node Online: Synchronized {len(target_list)} targets.", icon="🔋")
                     
                     progress_bar = st.progress(0)
