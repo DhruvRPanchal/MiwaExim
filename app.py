@@ -23,7 +23,7 @@ st.markdown("""
     h1, h2, h3 { color: #F8FAFC; font-weight: 800; letter-spacing: -0.02em; }
     .cyan-glow { color: #00F2FE; text-shadow: 0 0 8px rgba(0, 242, 254, 0.5); }
     </style>
-""", unsafe-allow_html=True)
+""", unsafe_allow_html=True) 
 
 st.markdown('# ⚡ <span class="cyan-glow">CYBERMAIL</span> // <span style="font-weight:300; font-size:24px;">VAULT LOCKED NODE</span>', unsafe-allow_html=True)
 st.write("System authenticated via secure environment tokens. Credentials hidden.")
