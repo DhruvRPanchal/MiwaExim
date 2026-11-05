@@ -158,8 +158,11 @@ with col2:
                     df = pd.read_excel(contact_file)
                     
                 email_col = [col for col in df.columns if 'email' in col.lower()]
-                if email_col:
-                    target_list = df[email_col].dropna().unique().tolist()
+                    if email_col:
+                        # We grab the first matched column name string, select the series, and extract unique values
+                        matched_column = email_col[0]
+                        target_list = df[matched_column].dropna().unique().tolist() #  Fixed Code
+
                     
                     if not sender_email or not sender_password:
                         st.error("🚨 CRITICAL OPERATION HALTED: Authentication profile data missing in terminal settings panel.")
