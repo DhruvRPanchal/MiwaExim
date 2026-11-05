@@ -40,8 +40,9 @@ except Exception:
     sender_email = None
     sender_password = None
 
+# --- TITAN SMTP PROTOCOL CONFIGURATION ---
 smtp_server = "smtp.titan.email"
-port = 587
+port = 465  # Switched to 465 for explicit SSL connections preferred by GoDaddy Titan
 
 st.sidebar.markdown('---')
 st.sidebar.markdown('### ⚙️ SAFETY SYSTEM ENGINE')
@@ -54,7 +55,6 @@ with col1:
     st.markdown("### 📝 1. COMPOSER SUITE")
     subject = st.text_input("CAMPAIGN SUBJECT LINE", placeholder="Enter transmission subject...")
     
-    # Streamlit updated selection method for premium feel
     email_mode = st.radio("CONTENT PROTOCOL", ["Plain Text", "HTML Template"], horizontal=True)
     body_content = st.text_area("PAYLOAD CORE BODY CONTENT", height=240, placeholder="Write text or HTML copy here...")
 
@@ -77,7 +77,6 @@ with col2:
                     
                 email_col = [col for col in df.columns if 'email' in col.lower()]
                 if email_col:
-                    # Select the first matched column string dynamically
                     matched_col = email_col[0]
                     target_list = df[matched_col].dropna().unique().tolist()
                     st.toast(f"Matrix Node Online: Synchronized {len(target_list)} targets.", icon="🔋")
@@ -88,8 +87,8 @@ with col2:
                     total = len(target_list)
                     success_count = 0
                     
-                    server = smtplib.SMTP(smtp_server, port)
-                    server.starttls()
+                    # Establish secure explicit connection with smtplib.SMTP_SSL
+                    server = smtplib.SMTP_SSL(smtp_server, port)
                     server.login(sender_email, sender_password)
                     
                     for index, email in enumerate(target_list):
