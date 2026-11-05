@@ -148,27 +148,28 @@ with col2:
     uploaded_files = st.file_uploader("INJECT ATTACHMENT DEPLOYMENTS (MULTIPLE)", accept_multiple_files=True)
     
     st.markdown("### 🚦 3. OPERATIONAL EXECUTION")
-    
+
+    # Broadcast processing loop framework logic
     if st.button("🔥 DISPATCH CAMPAIGN STREAMED ENGINE"):
         if contact_file is not None:
             try:
+                # High-speed data extraction logic
                 if contact_file.name.endswith('.csv'):
                     df = pd.read_csv(contact_file)
                 else:
                     df = pd.read_excel(contact_file)
                     
                 email_col = [col for col in df.columns if 'email' in col.lower()]
-                    if email_col:
-                        # We grab the first matched column name string, select the series, and extract unique values
-                        matched_column = email_col[0]
-                        target_list = df[matched_column].dropna().unique().tolist() #  Fixed Code
-
+                if email_col:
+                    # Target the first matched column string cleanly
+                    target_list = df[email_col[0]].dropna().unique().tolist()
                     
                     if not sender_email or not sender_password:
                         st.error("🚨 CRITICAL OPERATION HALTED: Authentication profile data missing in terminal settings panel.")
                     else:
-                        st.toast(f"MiwaExim Node Online: Loaded {len(target_list)} contacts.", icon="🔋")
+                        st.toast(f"Matrix Node Online: Synchronized {len(target_list)} unique targets.", icon="🔋")
                         
+                        # --- CONCURRENT LIVE DELIVERY ENGINE REPORT ---
                         progress_bar = st.progress(0)
                         status_metrics = st.empty()
                         
@@ -201,19 +202,21 @@ with col2:
                             except Exception as fail_trace:
                                 st.sidebar.error(f"Drop target failure [{email}]: {str(fail_trace)}")
                                 
+                            # Streamed UI data updates
                             current_prog = (index + 1) / total
                             progress_bar.progress(current_prog)
-                            status_metrics.markdown(f"**🟢 Stream Status:** Delivering package `{index+1}/{total}` // Success: `{success_count}`")
+                            status_metrics.markdown(f"**🟢 Stream Status:** Delivering package `{index+1}/{total}` // Node Success Score: `{success_count}`")
                             
                             if index < total - 1:
                                 time.sleep(throttle_delay)
                                 
                         server.quit()
                         st.balloons()
-                        st.success(f"⚡ ALL TRANSPORTS COMPLETE: Broadcast sent to {success_count}/{total} entities.")
+                        st.success(f"⚡ ALL TRANSPORTS COMPLETE: Successfully broadcasted to {success_count}/{total} entities.")
                 else:
-                    st.error("🚨 SHEET SCAN REJECTED: System failed to locate an 'Email' column label.")
+                    st.error("🚨 SHEET SCAN REJECTED: System mapping failed to detect any valid columns labeled 'Email'.")
             except Exception as io_err:
                 st.error(f"🚨 RESOURCE READ FAULT: {str(io_err)}")
         else:
-            st.error("🚨 CRITICAL TARGET EXCEPTION: Drop your contact list sheet file first.")
+            st.error("🚨 CRITICAL TARGET FRAME EXCEPTION: Please drop your target dataset matrix sheet to configure pipeline variables.")
+
